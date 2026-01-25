@@ -556,7 +556,7 @@ class Generator():
         self.text_encoder.model.to(device)
         context = self.text_encoder([input_prompt], device)
         context_null = self.text_encoder([n_prompt], device)
-        self.text_encoder.model.cpu()
+        # self.text_encoder.model.cpu()
 
         noise = [
             torch.randn(
@@ -642,7 +642,7 @@ class Generator():
             x0 = [x0_[:,:-latents_ref[0].shape[1]] for x0_ in x0]
 
             # if offload_model:
-            self.dit.cpu()
+            # self.dit.cpu()
             torch.cuda.empty_cache()
             # if get_local_rank() == 0:
             self.vae.model.to(device=device)
